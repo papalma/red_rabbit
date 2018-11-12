@@ -19,7 +19,6 @@ Scene* HelloWorld::createScene()
     auto world = scene->getPhysicsWorld();
     world->setGravity(Vec2(0,0));
     world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-
     return scene;
 }
 
@@ -125,25 +124,28 @@ bool HelloWorld::initWithPhysics()
         this->addChild(bg, -1);
     }
 
-    if( auto sprBomb = Sprite::create("bomb.png") ) {
-        sprBomb->setPosition(
+    _sprBomb = Sprite::create("bomb.png");
+    if( _sprBomb ) {
+        _sprBomb->setPosition(
                 origin.x + visibleSize.width / 2,
-                origin.y + visibleSize.height + sprBomb->getContentSize().height / 2);
-                this->addChild(sprBomb,1);
+                origin.y + visibleSize.height + _sprBomb->getContentSize().height / 2);
+        setPhysicsBody(_sprBomb);
+        this->addChild(_sprBomb,1);
 
         auto moveFinished =
                 CallFuncN::create(CC_CALLBACK_1(HelloWorld::moveFinished, this));
 
         auto moveTo = MoveTo::create(
-                2, Vec2(sprBomb->getPositionX(), 0 - sprBomb->getContentSize().height/2));
+                2, Vec2(_sprBomb->getPositionX(), 0 - _sprBomb->getContentSize().height/2));
         auto sequence = Sequence::create(moveTo, moveFinished, nullptr);
-        sprBomb->runAction(sequence);
+        _sprBomb->runAction(sequence);
     }
 
     if( auto sprPlayer = Sprite::create("player.png") ) {
         sprPlayer->setPosition(
                 origin.x + visibleSize.width / 2,
                 origin.y + visibleSize.height * 0.21);
+        setPhysicsBody(sprPlayer);
         this->addChild(sprPlayer, 0);
 
         Vector<SpriteFrame*> frames;
@@ -186,4 +188,11 @@ void HelloWorld::pauseCallback(cocos2d::Ref* pSender) {
 
 void HelloWorld::moveFinished(Node* sender) {
         CCLOG("Move finished");
+}
+
+void HelloWorld::setPhysicsBody(cocos2d::Sprite* sprite) {
+    auto body = PhysicsBody::createCircle(sprite->getContentSize().width / 2);
+    body->setContactTestBitmask(true);
+    body->setDynamic(true);
+    sprite->setPhysicsBody(body);
 }

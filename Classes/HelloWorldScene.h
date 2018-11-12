@@ -41,8 +41,10 @@ public:
     // implement the "static create()" method manually
 //    CREATE_FUNC(HelloWorld);
     void pauseCallback(cocos2d::Ref* pSender);
-
     void moveFinished(Node* sender);
+    bool onCollision(cocos2d::PhysicsContact& contact);
+    void setPhysicsBody(cocos2d::Sprite* sprite);
+    cocos2d::Sprite* _sprBomb;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
