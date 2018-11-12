@@ -62,10 +62,6 @@
 		9B4E44422197D70100C1C544 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E44352197D70100C1C544 /* play.png */; };
 		9B4E44432197D70100C1C544 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E44362197D70100C1C544 /* player2.png */; };
 		9B4E44442197D70100C1C544 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E44362197D70100C1C544 /* player2.png */; };
-		9BBB44DB2197A47A00336764 /* gtop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44D92197A47A00336764 /* gtop.jpg */; };
-		9BBB44DC2197A47A00336764 /* gtop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44D92197A47A00336764 /* gtop.jpg */; };
-		9BBB44DD2197A47A00336764 /* gback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44DA2197A47A00336764 /* gback.jpg */; };
-		9BBB44DE2197A47A00336764 /* gback.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44DA2197A47A00336764 /* gback.jpg */; };
 		9BBB44E02197CD6200336764 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44DF2197CD6200336764 /* background.png */; };
 		9BBB44E12197CD6200336764 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44DF2197CD6200336764 /* background.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -127,8 +123,6 @@
 		9B4E44342197D70100C1C544 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		9B4E44352197D70100C1C544 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		9B4E44362197D70100C1C544 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
-		9BBB44D92197A47A00336764 /* gtop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gtop.jpg; sourceTree = "<group>"; };
-		9BBB44DA2197A47A00336764 /* gback.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gback.jpg; sourceTree = "<group>"; };
 		9BBB44DF2197CD6200336764 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -260,8 +254,6 @@
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
-				9BBB44DA2197A47A00336764 /* gback.jpg */,
-				9BBB44D92197A47A00336764 /* gtop.jpg */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
 				9B4E44332197D70100C1C544 /* pause_pressed.png */,
 				9B4E44322197D70100C1C544 /* pause.png */,
@@ -387,8 +379,6 @@
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				9B4E44392197D70100C1C544 /* play_pressed.png in Resources */,
 				9B4E443D2197D70100C1C544 /* pause_pressed.png in Resources */,
-				9BBB44DD2197A47A00336764 /* gback.jpg in Resources */,
-				9BBB44DB2197A47A00336764 /* gtop.jpg in Resources */,
 				9B4E44432197D70100C1C544 /* player2.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				1AF87B891F6F781D007BE51C /* LaunchScreenBackground.png in Resources */,
@@ -406,14 +396,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4E44402197D70100C1C544 /* player.png in Resources */,
-				9BBB44DE2197A47A00336764 /* gback.jpg in Resources */,
 				9B4E443A2197D70100C1C544 /* play_pressed.png in Resources */,
 				9B4E443C2197D70100C1C544 /* pause.png in Resources */,
 				9B4E443E2197D70100C1C544 /* pause_pressed.png in Resources */,
 				9B4E44382197D70100C1C544 /* bomb.png in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
-				9BBB44DC2197A47A00336764 /* gtop.jpg in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				9B4E44422197D70100C1C544 /* play.png in Resources */,
@@ -462,6 +450,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = HCFHR3U99R;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -475,7 +464,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LIBRARY_SEARCH_PATHS = "/Users/papalma/Proyectos/mobile/cocos2d-x-3.17/prebuilt/**";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -486,7 +475,6 @@
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
-				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -498,6 +486,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = HCFHR3U99R;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -510,7 +499,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LIBRARY_SEARCH_PATHS = "/Users/papalma/Proyectos/mobile/cocos2d-x-3.17/prebuilt/**";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -521,7 +510,6 @@
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
-				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
