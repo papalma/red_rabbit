@@ -130,6 +130,14 @@ bool HelloWorld::initWithPhysics()
                 origin.x + visibleSize.width / 2,
                 origin.y + visibleSize.height + sprBomb->getContentSize().height / 2);
                 this->addChild(sprBomb,1);
+
+        auto moveFinished =
+                CallFuncN::create(CC_CALLBACK_1(HelloWorld::moveFinished, this));
+
+        auto moveTo = MoveTo::create(
+                2, Vec2(sprBomb->getPositionX(), 0 - sprBomb->getContentSize().height/2));
+        auto sequence = Sequence::create(moveTo, moveFinished, nullptr);
+        sprBomb->runAction(sequence);
     }
 
     if( auto sprPlayer = Sprite::create("player.png") ) {
@@ -174,4 +182,8 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 void HelloWorld::pauseCallback(cocos2d::Ref* pSender){
     _director->pushScene(
             TransitionFadeBL::create(1.0, PauseScene::createScene()));
+}
+
+void HelloWorld::moveFinished(Node* sender) {
+        CCLOG("Move finished");
 }

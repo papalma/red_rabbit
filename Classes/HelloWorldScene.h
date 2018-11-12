@@ -41,6 +41,8 @@ public:
     // implement the "static create()" method manually
 //    CREATE_FUNC(HelloWorld);
     void pauseCallback(cocos2d::Ref* pSender);
+
+    void moveFinished(Node* sender);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
