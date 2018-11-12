@@ -179,7 +179,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
 }
 
-void HelloWorld::pauseCallback(cocos2d::Ref* pSender){
+void HelloWorld::pauseCallback(cocos2d::Ref* pSender) {
     _director->pushScene(
             TransitionFadeBL::create(1.0, PauseScene::createScene()));
 }
