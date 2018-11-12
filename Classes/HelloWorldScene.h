@@ -44,7 +44,14 @@ public:
     void moveFinished(Node* sender);
     bool onCollision(cocos2d::PhysicsContact& contact);
     void setPhysicsBody(cocos2d::Sprite* sprite);
+    void initTouch();
+    void movePlayerByTouch(cocos2d::Touch* touch, cocos2d::Event* event);
+    void movePlayerIfPossible(float newX);
+    
+private:
     cocos2d::Sprite* _sprBomb;
+    cocos2d::Sprite* _sprPlayer;
+    cocos2d::Size _visibleSize;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
