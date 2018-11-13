@@ -172,10 +172,11 @@ bool HelloWorld::initWithPhysics()
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 
     initTouch();
+//    initMultiTouch();
+    initAccelerometer();
 
     return true;
 }
-
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
@@ -243,3 +244,56 @@ void HelloWorld::movePlayerByTouch(Touch* touch, Event* event) {
         movePlayerIfPossible(touchLocation.x);
     }
 }
+
+// funcs for multi touch support
+//void HelloWorld::initMultiTouch() {
+//    auto listener = EventListenerTouchAllAtOnce::create();
+//
+//    listener->onTouchesBegan = [](const std::vector<Touch*>& touches, Event* event){ };
+//    listener->onTouchesMoved = CC_CALLBACK_2(HelloWorld::moveByMultiTouch,this);
+//    listener->onTouchesEnded = [](const std::vector<Touch*>& touches, Event* event){ };
+//    getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+//}
+//
+//void HelloWorld::moveByMultiTouch(const std::vector<Touch*>& touches, Event* event) {
+//    for( Touch* touch: touches ) {
+//        Vec2 touchLocation = touch->getLocation();
+//        if(_sprPlayer->getBoundingBox().containsPoint(touchLocation)){
+//            movePlayerIfPossible(touchLocation.x);
+//        } else if( _sprBomb->getBoundingBox().containsPoint(touchLocation)){
+//            _sprBomb->setPosition(touchLocation);
+//        }
+//    }
+//}
+
+// funcs for accelerometer support
+void HelloWorld::initAccelerometer() {
+    // activate accelerometer.. what if there is no accel available?
+    Device::setAccelerometerEnabled(true);
+
+    auto listener = EventListenerAcceleration::create(
+            CC_CALLBACK_2(HelloWorld::movePlayerByAccelerometer, this) );
+    getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void HelloWorld::movePlayerByAccelerometer(
+        cocos2d::Acceleration* acceleration, cocos2d::Event* event) {
+    int accelerationMult = 10;
+    movePlayerIfPossible(_sprPlayer->getPositionX() + (acceleration->x * accelerationMult));
+}
+
+// funcs for android back button support
+// for iOS this is handled nicely by the library.
+//void HelloWorld::initBackButtonListener() {
+//    auto listener = EventListenerKeyboard::create();
+//    listener->onKeyPressed = [=](EventKeyboard::KeyCode keyCode, Event* event) { };
+//    listener->onKeyReleased = CC_CALLBACK_2(HelloWorld::onKeyPressed, this);
+//    getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+//}
+//
+//void HelloWorld::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event) {
+//    cocos2d::log("key pressed: %d", keyCode);
+//     if(keyCode == EventKeyboard::KeyCode::KEY_BACK) {
+//       Director::getInstance()->end();
+//    }
+//}

@@ -42,12 +42,31 @@ public:
 //    CREATE_FUNC(HelloWorld);
     void pauseCallback(cocos2d::Ref* pSender);
     void moveFinished(Node* sender);
+    
     bool onCollision(cocos2d::PhysicsContact& contact);
     void setPhysicsBody(cocos2d::Sprite* sprite);
+
+    // single touch support
     void initTouch();
     void movePlayerByTouch(cocos2d::Touch* touch, cocos2d::Event* event);
     void movePlayerIfPossible(float newX);
-    
+
+    // multitouch funcs
+//    void initMultiTouch();
+//    void moveByMultiTouch(const std::vector<cocos2d::Touch*>& touches,
+//            cocos2d::Event* event);
+
+    // accelerometer funcs
+    void movePlayerByAccelerometer(cocos2d::Acceleration* acceleration,
+            cocos2d::Event* event);
+    void initAccelerometer();
+
+    // android back button support
+    // This is not needed for iOS, since home button is handled nicely by the
+    // library.
+//    void initBackButtonListener();
+//    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+
 private:
     cocos2d::Sprite* _sprBomb;
     cocos2d::Sprite* _sprPlayer;
