@@ -66,11 +66,13 @@ public:
     // library.
 //    void initBackButtonListener();
 //    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+    void addBombs(float dt);
 
 private:
     cocos2d::Sprite* _sprBomb;
     cocos2d::Sprite* _sprPlayer;
     cocos2d::Size _visibleSize;
+    cocos2d::Vec2 _origin;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

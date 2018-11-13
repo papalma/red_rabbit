@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "PauseScene.h"
+#include "GameOverScene.h"
 
 USING_NS_CC;
 
@@ -48,9 +49,9 @@ bool HelloWorld::initWithPhysics()
     }
 
     _visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    log("visibleSize %f %f", _visibleSize.height, _visibleSize.width);
-    log("origin %f %f", origin.x, origin.y);
+    _origin = Director::getInstance()->getVisibleOrigin();
+//    log("visibleSize %f %f", _visibleSize.height, _visibleSize.width);
+//    log("_origin %f %f", _origin.x, _origin.y);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -75,8 +76,8 @@ bool HelloWorld::initWithPhysics()
     }
     else
     {
-        float x = origin.x + _visibleSize.width - closeItem->getContentSize().width/2;
-        float y = origin.y + closeItem->getContentSize().height/2;
+        float x = _origin.x + _visibleSize.width - closeItem->getContentSize().width/2;
+        float y = _origin.y + closeItem->getContentSize().height/2;
         closeItem->setPosition(Vec2(x,y));
     }
 
@@ -92,43 +93,26 @@ bool HelloWorld::initWithPhysics()
     // create and initialize a label
 
     auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
+    if( label ){
         // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + _visibleSize.width/2,
-                                origin.y + _visibleSize.height - label->getContentSize().height));
-
+        label->setPosition(Vec2(_origin.x + _visibleSize.width/2,
+                                _origin.y + _visibleSize.height - label->getContentSize().height));
         // add the label as a child to this layer
         this->addChild(label, 1);
     }
 
-    // add "HelloWorld" logo
-    if( auto sprite = Sprite::create("HelloWorld.png") ) {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(_visibleSize.width/2 + origin.x, _visibleSize.height/2 + origin.y));
-
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-
-        sprite->runAction(FadeOut::create(1.0));
-    }
-
     if( auto bg = Sprite::create("background.png") ) {
         bg->setPosition(
-                origin.x + bg->getContentSize().width / 2,
-                origin.y + bg->getContentSize().height /2);
+                _origin.x + bg->getContentSize().width / 2,
+                _origin.y + bg->getContentSize().height /2);
         this->addChild(bg, -1);
     }
 
     _sprBomb = Sprite::create("bomb.png");
     if( _sprBomb ) {
         _sprBomb->setPosition(
-                origin.x + _visibleSize.width / 2,
-                origin.y + _visibleSize.height + _sprBomb->getContentSize().height / 2);
+                _origin.x + _visibleSize.width / 2,
+                _origin.y + _visibleSize.height + _sprBomb->getContentSize().height / 2);
         setPhysicsBody(_sprBomb);
         this->addChild(_sprBomb,1);
 
@@ -147,8 +131,8 @@ bool HelloWorld::initWithPhysics()
     _sprPlayer = Sprite::create("player.png");
     if( _sprPlayer ) {
         _sprPlayer->setPosition(
-                origin.x + _visibleSize.width / 2,
-                origin.y + _visibleSize.height * 0.21);
+                _origin.x + _visibleSize.width / 2,
+                _origin.y + _visibleSize.height * 0.21);
         setPhysicsBody(_sprPlayer);
         this->addChild(_sprPlayer, 0);
 
@@ -174,6 +158,8 @@ bool HelloWorld::initWithPhysics()
     initTouch();
 //    initMultiTouch();
     initAccelerometer();
+
+    schedule(CC_SCHEDULE_SELECTOR(HelloWorld::addBombs), 3.0f);
 
     return true;
 }
@@ -212,11 +198,9 @@ void HelloWorld::setPhysicsBody(cocos2d::Sprite* sprite) {
 }
 
 bool HelloWorld::onCollision(cocos2d::PhysicsContact& contact) {
-//    _sprBomb->setVisible(false);
-    auto body = _sprBomb ->getPhysicsBody();
-    body->setVelocity(Vec2());
-    body->applyTorque(100900.5f);
-    return false;
+    Director::getInstance()->replaceScene(
+            TransitionFlipX::create(1.0f, GameOverScene::create()));
+            return false;
 }
 
 void HelloWorld::initTouch() {
@@ -297,3 +281,16 @@ void HelloWorld::movePlayerByAccelerometer(
 //       Director::getInstance()->end();
 //    }
 //}
+
+void HelloWorld::addBombs(float dt) {
+    for(int i = 0 ; i < 3 ; i++) {
+        if( auto bomb = Sprite::create("bomb.png")) {
+            bomb->setPosition(
+                    _origin.x + CCRANDOM_0_1() * _visibleSize.width,
+                    _origin.y + _visibleSize.height + bomb->getContentSize().height/2);
+            this->addChild(bomb,1);
+            setPhysicsBody(bomb);
+            bomb->getPhysicsBody()->setVelocity(Vect(0, ( (CCRANDOM_0_1() + 0.2f) * -250) ));
+        }
+    }
+}
