@@ -62,6 +62,8 @@
 		9B4E44422197D70100C1C544 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E44352197D70100C1C544 /* play.png */; };
 		9B4E44432197D70100C1C544 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E44362197D70100C1C544 /* player2.png */; };
 		9B4E44442197D70100C1C544 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E44362197D70100C1C544 /* player2.png */; };
+		9B7E1848219B176000EFBA89 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E1847219B176000EFBA89 /* GameOverScene.cpp */; };
+		9B7E1849219B176000EFBA89 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E1847219B176000EFBA89 /* GameOverScene.cpp */; };
 		9BBB44E02197CD6200336764 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44DF2197CD6200336764 /* background.png */; };
 		9BBB44E12197CD6200336764 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB44DF2197CD6200336764 /* background.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -123,6 +125,8 @@
 		9B4E44342197D70100C1C544 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		9B4E44352197D70100C1C544 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		9B4E44362197D70100C1C544 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
+		9B7E1847219B176000EFBA89 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
+		9B7E184A219B178700EFBA89 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		9BBB44DF2197CD6200336764 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -272,6 +276,8 @@
 			children = (
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+				9B7E1847219B176000EFBA89 /* GameOverScene.cpp */,
+				9B7E184A219B178700EFBA89 /* GameOverScene.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				9B22CF0021973B1E00B83238 /* PauseScene.cpp */,
@@ -419,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B7E1848219B176000EFBA89 /* GameOverScene.cpp in Sources */,
 				1AF87B781F6F77F7007BE51C /* AppController.mm in Sources */,
 				9B22CF0221973B1E00B83238 /* PauseScene.cpp in Sources */,
 				1AF87B8B1F6F782A007BE51C /* RootViewController.mm in Sources */,
@@ -434,6 +441,7 @@
 			files = (
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				9B7E1849219B176000EFBA89 /* GameOverScene.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				9B22CF0321973B1E00B83238 /* PauseScene.cpp in Sources */,
 			);
@@ -611,13 +619,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../cocos2d",
-					"$(SRCROOT)/../cocos2d/cocos/audio/include",
-					"$(SRCROOT)/../cocos2d/cocos",
-					"$(SRCROOT)/../cocos2d/extensions",
-					"$(SRCROOT)/../cocos2d/external",
-					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
-					"$(SRCROOT)/../cocos2d/cocos/editor-support",
+					"$(SRCROOT)/../../cocos2d-x-3.17",
+					"$(SRCROOT)/../../cocos2d-x-3.17/cocos/audio/include",
+					"$(SRCROOT)/../../cocos2d-x-3.17/cocos",
+					"$(SRCROOT)/../../cocos2d-x-3.17/extensions",
+					"$(SRCROOT)/../../cocos2d-x-3.17/external",
+					"$(SRCROOT)/../../cocos2d-x-3.17/external/chipmunk/include/chipmunk",
+					"$(SRCROOT)/../../cocos2d-x-3.17/cocos/editor-support",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -659,13 +667,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../cocos2d",
-					"$(SRCROOT)/../cocos2d/cocos/audio/include",
-					"$(SRCROOT)/../cocos2d/cocos",
-					"$(SRCROOT)/../cocos2d/extensions",
-					"$(SRCROOT)/../cocos2d/external",
-					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
-					"$(SRCROOT)/../cocos2d/cocos/editor-support",
+					"$(SRCROOT)/../../cocos2d-x-3.17",
+					"$(SRCROOT)/../../cocos2d-x-3.17/cocos/audio/include",
+					"$(SRCROOT)/../../cocos2d-x-3.17/cocos",
+					"$(SRCROOT)/../../cocos2d-x-3.17/extensions",
+					"$(SRCROOT)/../../cocos2d-x-3.17/external",
+					"$(SRCROOT)/../../cocos2d-x-3.17/external/chipmunk/include/chipmunk",
+					"$(SRCROOT)/../../cocos2d-x-3.17/cocos/editor-support",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
