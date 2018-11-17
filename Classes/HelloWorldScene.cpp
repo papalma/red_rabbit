@@ -198,6 +198,10 @@ void HelloWorld::setPhysicsBody(cocos2d::Sprite* sprite) {
 }
 
 bool HelloWorld::onCollision(cocos2d::PhysicsContact& contact) {
+    auto playerShape = _sprPlayer->getPhysicsBody()->getFirstShape();
+    if(playerShape != contact.getShapeA() && playerShape != contact.getShapeB()) {
+        return false;
+    }
     Director::getInstance()->replaceScene(
             TransitionFlipX::create(1.0f, GameOverScene::create()));
             return false;
